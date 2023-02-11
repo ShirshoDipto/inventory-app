@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <div id="contents">
+        <div class="header">
+            <div class="homepage-title"><a href="/"><p>Inventory App</p></a></div>
+            <div class="menu">
+                <div class="home"><a href="/">Home</a></div>
+                <div class="all-categories"><a href="/categories">All Categories</a></div>
+                <div class="all-items"><a href="/items">All Items</a></div>
+                <div class="create-category"><a href="/category/create">Create Category</a></div>
+                <div class="create-item"><a href="/item/create">Create Item</a></div>
+            </div>
+        </div>
+        <div class="main">
+            <%- body %>
+        </div>
+        <div class="footer">
+            <p>Copyright &copy; Shirsho Dipto</p>
+        </div>
+    </div>
+    
+</body>
+</html>

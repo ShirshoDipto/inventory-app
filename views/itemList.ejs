@@ -1,0 +1,27 @@
+<% if (items.length > 0) { %>
+    <div class="main-header">
+        <h1><%= title %></h1>
+    </div>
+    <div class="list">
+            <% for (let item of items) {%>
+                <div class="detail">
+                    <div class="descriptions">
+                        <div class="label">
+                            <div class="field-wrapper"><span class="field-label">Name: </span><%= item.name %></div>
+                        </div>
+                        <div class="label">
+                            <div class="field-wrapper"><span class="field-label">Price: </span><%= item.price %></div>
+                        </div>
+                        <div class="label">
+                            <div class="field-wrapper"><span class="field-label">Number in Stock: </span><%= item.number_in_stock %></div>
+                        </div>
+                    </div>
+                    <div class="write-operations">
+                        <a href=<%= item.url %>> Show Details </a>
+                    </div>
+                </div>
+            <% } %>
+    </div>
+<% } else { %>
+    <h1>There are no items.</h1>
+<% } %>

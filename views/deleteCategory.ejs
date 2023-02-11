@@ -1,0 +1,13 @@
+<div class="main-header">
+    <h1>Are you sure you want to delete the category and all its items?</h1>
+</div>
+
+<div class="delete-category-form">
+    <form method="post" action="">
+        <input type="hidden" id="categoryid" name="categoryid" value="<%= category._id %>">
+        <div class="delete-category-buttons">
+            <button type="submit">Yes</button>
+            <a href=<%= category.url %>><button type="button">No</button></a>
+        </div>
+    </form>
+</div>

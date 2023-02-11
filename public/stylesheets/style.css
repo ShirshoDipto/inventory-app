@@ -1,8 +1,130 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+#contents {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  height: 70px;
+  font-size: 1.2rem;
+}
+
+.homepage-title {
+  flex: 1;
+  align-items: center;
+}
+
+.menu {
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 50px;
+  gap: 40px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+.welcome-page {
+  gap: 20px;
+}
+
+.category-item-count {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  border: thin solid grey;
+}
+
+.category-count {
+  border-bottom: thin solid grey;
+}
+
+.category-count, .item-count {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.list {
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.all-category {
+  display: flex;
+  gap: 30px;
+}
+
+.detail {
+  flex-direction: column;
+  gap: 20px;
+  max-width: 300px;
+  border: thin solid blue;
+  padding: 20px;
+}
+
+.description div{
+  max-width: 400px;
+}
+
+.field-label {
+  color: blue;
+}
+
+.write-operations {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.delete-category-buttons {
+  gap: 20px;
+}
+
+.main-header, .detail-div, .detail, .list, .welcome-page, .homepage-title, .delete-category-buttons, .create-form
+, .description {
+  display: flex;
+  justify-content: center;
+}
+
+.descriptions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.create-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 a {
   color: #00B7FF;
+  text-decoration: none;
 }

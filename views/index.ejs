@@ -1,11 +1,17 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<% if (results) { %>
+    <div class="main-header"><h1>Welcome to your Inventory</h1></div>
+    <div class="welcome-page">
+        <div class="category-item-count">
+            <div class="category-count">
+                <p>Total Categories:</p><p><%= results[0] %></p>
+            </div>
+            <div class="item-count">
+                <p>Total Items:</p><p><%= results[1] %></p>
+            </div>
+        </div>
+    </div>
+<% } else { %>
+    <h1>Error getting dynamic content. </h1>
+<% } %>
+
+
