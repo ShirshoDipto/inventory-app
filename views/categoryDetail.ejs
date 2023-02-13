@@ -12,16 +12,17 @@
         <% for (let item of category.items) {%>
             <div class="detail-div">
                 <div class="detail">
+                    <div class="elem-image">
+                        <% if (item.photo !== undefined) { %>
+                            <img src="/images/<%= item.photo %>" alt="item image">
+                        <% } else { %>
+                            <div class="no-image">No Image Available</div>
+                        <% } %>
+                    </div>
                     <div class="descriptions">
-                        <div class="label">
-                            <div class="field-wrapper"><span class="field-label">Name: </span><%= item.name %></div>
-                        </div>
-                        <div class="label">
-                            <div class="field-wrapper"><span class="field-label">price: </span><%= item.price %></div>
-                        </div>
-                        <div class="label">
-                            <div class="field-wrapper"><span class="field-label">Number in Stock: </span><%= item.number_in_stock %></div>
-                        </div>
+                        <div class="field-wrapper"><span class="field-label">Name: </span><%= item.name %></div>
+                        <div class="field-wrapper"><span class="field-label">price: </span><%= item.price %></div>
+                        <div class="field-wrapper"><span class="field-label">Number in Stock: </span><%= item.number_in_stock %></div>
                     </div>
                     <div class="write-operations">
                         <a href=<%= item.url %>> Show Details </a>

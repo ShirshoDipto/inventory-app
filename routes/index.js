@@ -1,5 +1,7 @@
 var express = require("express");
 var router = express.Router();
+const multer = require("multer")
+const upload = multer({dest: "public/images"})
 
 const categoryController = require("../controllers/categoryController");
 const itemController = require("../controllers/itemController");
@@ -29,7 +31,7 @@ router.get("/items", itemController.itemList);
 
 router.get("/item/create", itemController.createItemGet);
 
-router.post("/item/create", itemController.createItemPost);
+router.post("/item/create", upload.single("itemPhoto"), itemController.createItemPost);
 
 router.get("/item/:id", itemController.itemDetail);
 
@@ -39,6 +41,6 @@ router.post("/item/:id/delete", itemController.deleteItemPost);
 
 router.get("/item/:id/update", itemController.updateItemGet);
 
-router.post("/item/:id/update", itemController.updateItemPost);
+router.post("/item/:id/update", upload.single("itemPhoto"), itemController.updateItemPost);
 
 module.exports = router;

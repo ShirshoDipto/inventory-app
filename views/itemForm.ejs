@@ -3,32 +3,20 @@
 </div>
 <% if (categories.length > 0) { %>
     <div class="create-form">
-        <form method="POST" action="">
-            <% if (item === undefined) { %>
-                <input type="text" id="itemName" name="itemName" required placeholder="Name" maxlength="100">
-                <select name="itemCategory" id="itemCategory">
-                    <% categories.forEach(category => { %>
-                        <option value="<%= category._id %>"><%= category.name %></option>
-                    <% }) %>
-                </select>
-                <input type="number" id="itemPrice" name="itemPrice" required placeholder="Price" min="1" max="100000000">
-                <input type="number" id="itemStock" name="itemStock" required placeholder="Number in Stock" min="1" max="100000000">
-                <textarea rows="10" type="text" id="itemDescription" name="itemDescription" required placeholder="Description" maxlength="1000"></textarea>
-            <% } else { %>
-                <input type="text" id="itemName" name="itemName" required placeholder="Name" maxlength="200" value="<%= item.name %>">
-                <select name="itemCategory" id="itemCategory">
-                    <% categories.forEach(category => { %>
-                        <% if (category._id.toString() !== item.category._id.toString()) { %>
-                            <option value="<%= category._id %>"><%= category.name %></option>
-                        <% } else { %>
-                            <option selected value="<%= category._id %>"><%= category.name %></option>
-                        <% } %>
-                    <% }) %>
-                </select>
-                <input type="number" id="itemPrice" name="itemPrice" required placeholder="Price" min="1" max="100000000" value="<%= parseInt(item.price.slice(1)) %>">
-                <input type="number" id="itemStock" name="itemStock" required placeholder="Number in Stock" min="1" max="100000000" value="<%= item.number_in_stock %>">
-                <textarea rows="10" type="text" id="itemDescription" name="itemDescription" required placeholder="Description" maxlength="1000"><%= item.description %></textarea>
-            <% } %>
+        <form method="POST" action="" enctype="multipart/form-data">
+            <input type="text" id="itemName" name="itemName" required placeholder="Name" maxlength="100">
+            <select name="itemCategory" id="itemCategory">
+                <% categories.forEach(category => { %>
+                    <option value="<%= category._id %>"><%= category.name %></option>
+                <% }) %>
+            </select>
+            <input type="number" id="itemPrice" name="itemPrice" required placeholder="Price" min="1" max="100000000">
+            <input type="number" id="itemStock" name="itemStock" required placeholder="Number in Stock" min="1" max="100000000">
+            <textarea rows="10" type="text" id="itemDescription" name="itemDescription" required placeholder="Description" maxlength="1000"></textarea>
+            <div class="itemphoto">
+                <label for="itemPhoto">Add a photo (Optional)</label>
+                <input type="file" id="itemPhoto" name="itemPhoto">
+            </div>
             <button type="submit">Submit</button>
         </form>
     </div>

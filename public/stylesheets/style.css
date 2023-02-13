@@ -75,6 +75,19 @@ body {
   flex-wrap: wrap;
 }
 
+.elem-image img {
+  width: 100%;
+  height: 100%;
+}
+
+.elem-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  min-width: 250px;
+}
+
 .all-category {
   display: flex;
   gap: 30px;

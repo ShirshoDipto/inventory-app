@@ -6,21 +6,21 @@
 <div class="list">
     <div class="detail-div">
         <div class="detail">
+            <div class="elem-image">
+                <% if (item.photo !== undefined) { %>
+                    <img src="/images/<%= item.photo %>" alt="item image">
+                <% } else { %>
+                    <div class="no-image">No Image Available</div>
+                <% } %>
+            </div>
             <div class="descriptions">
-                <div class="label">
-                    <div class="field-wrapper"><span class="field-label">Category: </span><a href="<%= item.category.url %>"><%= item.category.name %></a></div>
-                </div>
-                <div class="label">
-                    <div class="field-wrapper"><span class="field-label">Price: </span><%= item.price %></div>
-                </div>
-                <div class="label">
-                    <div class="field-wrapper"><span class="field-label">Number in Stock: </span><%= item.number_in_stock %></div>
-                </div>
+                <div class="field-wrapper"><span class="field-label">Category: </span><a href="<%= item.category.url %>"><%= item.category.name %></a></div>
+                <div class="field-wrapper"><span class="field-label">Price: </span><%= item.price %></div>
+                <div class="field-wrapper"><span class="field-label">Number in Stock: </span><%= item.number_in_stock %></div>
             </div>
         </div>
     </div>
 </div>
-
 
 <div class="write-operations">
     <a href=<%= item.url %>/update><button class="update">Update Item</button></a>

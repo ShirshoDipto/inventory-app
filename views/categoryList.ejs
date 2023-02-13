@@ -3,24 +3,18 @@
         <h1><%= title %></h1>
     </div>
     <div class="list">
-            <% for (let category of listCategory) {%>
-                <div class="detail">
-                    <div class="descriptions">
-                        <div class="label">
-                            <div class="field-wrapper"><span class="field-label">Name: </span><%= category.name %></div>
-                        </div>
-                        <div class="label">
-                            <div class="field-wrapper"><span class="field-label">Description: </span><%= category.description %></div>
-                        </div>
-                        <div class="label">
-                            <div class="field-wrapper"><span class="field-label">Number of Items: </span><%= category.items.length %></div>
-                        </div>
-                    </div>
-                    <div class="write-operations">
-                        <a href=<%= category.url %>> Show Details </a>
-                    </div>
+        <% for (let category of listCategory) {%>
+            <div class="detail">
+                <div class="descriptions">
+                    <div class="field-wrapper"><span class="field-label">Name: </span><%= category.name %></div>
+                    <div class="field-wrapper"><span class="field-label">Description: </span><%= category.description %></div>
+                    <div class="field-wrapper"><span class="field-label">Number of Items: </span><%= category.items.length %></div>
                 </div>
-            <% } %>
+                <div class="write-operations">
+                    <a href=<%= category.url %>> Show Details </a>
+                </div>
+            </div>
+        <% } %>
     </div>
 <% } else { %>
     <h1>There are no categories.</h1>

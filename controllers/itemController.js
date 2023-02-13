@@ -1,6 +1,8 @@
 const Item = require("../models/item");
 const Category = require("../models/category");
 const { body, validationResult } = require("express-validator");
+const fs = require("fs/promises")
+const path = require("path")
 
 exports.itemList = (req, res, next) => {
   Item.find({})
@@ -72,13 +74,25 @@ exports.createItemPost = [
             })
             return
         }
-        const item = new Item({
-            name: req.body.itemName,
-            description: req.body.itemDescription,
-            price: "$" + req.body.itemPrice,
-            number_in_stock: req.body.itemStock,
-            category: req.body.itemCategory
-        })
+        let item;
+        if (req.file !== undefined) {
+            item = new Item({
+                name: req.body.itemName,
+                description: req.body.itemDescription,
+                price: "$" + req.body.itemPrice,
+                number_in_stock: req.body.itemStock,
+                photo: req.file.filename,
+                category: req.body.itemCategory
+            })
+        } else {
+            item = new Item({
+                name: req.body.itemName,
+                description: req.body.itemDescription,
+                price: "$" + req.body.itemPrice,
+                number_in_stock: req.body.itemStock,
+                category: req.body.itemCategory
+            })
+        }
 
         async function updateCategory() {
             await item.save()
@@ -106,6 +120,7 @@ exports.itemDetail = (req, res, next) => {
             err.status = 404
             return next(err)
         }
+        console.log(item.photo)
         res.render("itemDetail", {
             title: "Item Detail",
             item: item
@@ -142,7 +157,10 @@ exports.updateItemPost = [
     body("itemDescription", "Description must be specified.")
     .trim()
     .isLength({min: 1})
-    .escape(),
+    .escape()
+    .customSanitizer(value => {
+        return value.replace("&#x27;", "'")
+    }),
 
     body("itemPrice", "Price must be specified.")
     .trim()
@@ -155,6 +173,7 @@ exports.updateItemPost = [
     .escape(),
 
     (req, res, next) => {
+        console.log(req.body)
         const errors = validationResult(req)
 
         if (!errors.isEmpty()) {
@@ -175,6 +194,12 @@ exports.updateItemPost = [
 
         async function updateItem() {
             const item = await Item.findById(req.params.id)
+            if (req.file !== undefined) {
+                if (item.photo !== undefined) {
+                    fs.unlink(path.join(__dirname + `/../public/images/${item.photo}`))
+                }
+                item.photo = req.file.filename
+            }
             item.name = req.body.itemName
             item.description = req.body.itemDescription
             item.price = "$" + req.body.itemPrice
@@ -214,6 +239,9 @@ exports.deleteItemPost = (req, res, next) => {
     category.items = updatedItems
     await category.save()
     await Item.findByIdAndRemove(req.params.id)
+    if (item.photo !== undefined) {
+        await fs.unlink(path.join(__dirname + `/../public/images/${item.photo}`))
+    }
     res.redirect(category.url)
   }
   deleteItem().catch(err => {
