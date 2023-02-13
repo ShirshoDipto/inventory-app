@@ -105,6 +105,11 @@ body {
   max-width: 400px;
 }
 
+.field-wrapper-description {
+  max-height: 100px;
+  overflow: hidden;
+}
+
 .field-label {
   color: blue;
 }
@@ -120,7 +125,7 @@ body {
 }
 
 .main-header, .detail-div, .detail, .list, .welcome-page, .homepage-title, .delete-category-buttons, .create-form
-, .description {
+, .description, .no-categry-msg {
   display: flex;
   justify-content: center;
 }

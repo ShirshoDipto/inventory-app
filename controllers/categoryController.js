@@ -1,6 +1,8 @@
 const Category = require("../models/category");
 const Item = require("../models/item");
 const { body, validationResult } = require("express-validator");
+const fs = require("fs/promises")
+const path = require("path")
 
 exports.index = (req, res) => {
   Promise.all([Category.countDocuments({}), Item.countDocuments({})])
@@ -174,6 +176,10 @@ exports.deleteCategoryPost = (req, res, next) => {
     const category = await Category.findById(req.params.id)
 
     for (let itemId of category.items) {
+      const item = Item.findById(itemId)
+      if (item.photo !== undefined) {
+        await fs.unlink(path.join(__dirname + `/../public/images/${item.photo}`))
+      } 
       await Item.findByIdAndRemove(itemId)
     }
 

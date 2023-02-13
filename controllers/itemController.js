@@ -120,7 +120,6 @@ exports.itemDetail = (req, res, next) => {
             err.status = 404
             return next(err)
         }
-        console.log(item.photo)
         res.render("itemDetail", {
             title: "Item Detail",
             item: item
@@ -173,7 +172,6 @@ exports.updateItemPost = [
     .escape(),
 
     (req, res, next) => {
-        console.log(req.body)
         const errors = validationResult(req)
 
         if (!errors.isEmpty()) {
@@ -196,7 +194,7 @@ exports.updateItemPost = [
             const item = await Item.findById(req.params.id)
             if (req.file !== undefined) {
                 if (item.photo !== undefined) {
-                    fs.unlink(path.join(__dirname + `/../public/images/${item.photo}`))
+                    await fs.unlink(path.join(__dirname + `/../public/images/${item.photo}`))
                 }
                 item.photo = req.file.filename
             }
@@ -232,7 +230,7 @@ exports.deleteItemPost = (req, res, next) => {
     const category = await Category.findById(item.category)
     let updatedItems = []
     for (let itemId of category.items) {
-        if (itemId !== item._id) {
+        if (itemId.toString() !== req.params.id) {
             updatedItems.push(itemId)
         }
     }
