@@ -4,10 +4,10 @@
 
 <div class="create-form">
     <form method="POST" action="" enctype="multipart/form-data">
-        <input type="text" id="itemName" name="itemName" required placeholder="Name" maxlength="200" value="<%= item.name %>">
+        <input type="text" id="itemName" name="itemName" required placeholder="Name" maxlength="200" value="<%- item.name %>">
         <input type="number" id="itemPrice" name="itemPrice" required placeholder="Price" min="1" max="100000000" value="<%= parseInt(item.price.slice(1)) %>">
         <input type="number" id="itemStock" name="itemStock" required placeholder="Number in Stock" min="1" max="100000000" value="<%= item.number_in_stock %>">
-        <textarea rows="10" type="text" id="itemDescription" name="itemDescription" required placeholder="Description" maxlength="1000"><%= item.description %></textarea>
+        <textarea rows="10" type="text" id="itemDescription" name="itemDescription" required placeholder="Description" maxlength="1000"><%- item.description %></textarea>
         <div class="itemphoto">
             <label for="itemPhoto">Want to change the photo? (Optional)</label>
             <input type="file" id="itemPhoto" name="itemPhoto">

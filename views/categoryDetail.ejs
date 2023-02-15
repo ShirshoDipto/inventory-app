@@ -1,6 +1,6 @@
-<div class="main-header"><h1><%= category.name %></h1></div>
+<div class="main-header"><h1><%- category.name %></h1></div>
 <div class="description">
-    <div><p><%= category.description %></p></div>
+    <div><p><%- category.description %></p></div>
 </div>
 
 <div class="main-header">
@@ -20,7 +20,7 @@
                         <% } %>
                     </div>
                     <div class="descriptions">
-                        <div class="field-wrapper-name"><span class="field-label">Name: </span><%= item.name %></div>
+                        <div class="field-wrapper-name"><span class="field-label">Name: </span><%- item.name %></div>
                         <div class="field-wrapper-description"><span class="field-label">price: </span><%= item.price %></div>
                         <div class="field-wrapper-srock"><span class="field-label">Number in Stock: </span><%= item.number_in_stock %></div>
                     </div>

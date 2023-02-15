@@ -6,8 +6,8 @@
         <% for (let category of listCategory) {%>
             <div class="detail">
                 <div class="descriptions">
-                    <div class="field-wrapper-name"><span class="field-label">Name: </span><%= category.name %></div>
-                    <div class="field-wrapper-description"><span class="field-label">Description: </span><%= category.description %></div>
+                    <div class="field-wrapper-name"><span class="field-label">Name: </span><%- category.name %></div>
+                    <div class="field-wrapper-description"><span class="field-label">Description: </span><%- category.description %></div>
                     <div class="field-wrapper-stock"><span class="field-label">Number of Items: </span><%= category.items.length %></div>
                 </div>
                 <div class="write-operations">

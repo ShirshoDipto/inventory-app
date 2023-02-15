@@ -1,6 +1,6 @@
-<div class="main-header"><h1><%= item.name %></h1></div>
+<div class="main-header"><h1><%- item.name %></h1></div>
 <div class="description">
-    <div><%= item.description %></div>
+    <div><%- item.description %></div>
 </div>
 
 <div class="list">
@@ -14,7 +14,7 @@
                 <% } %>
             </div>
             <div class="descriptions">
-                <div class="field-wrapper-name"><span class="field-label">Category: </span><a href="<%= item.category.url %>"><%= item.category.name %></a></div>
+                <div class="field-wrapper-name"><span class="field-label">Category: </span><a href="<%= item.category.url %>"><%- item.category.name %></a></div>
                 <div class="field-wrapper-description"><span class="field-label">Price: </span><%= item.price %></div>
                 <div class="field-wrapper-stock"><span class="field-label">Number in Stock: </span><%= item.number_in_stock %></div>
             </div>
